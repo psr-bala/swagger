@@ -1,0 +1,52 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "Api Documentation",
+		"version": "1.0",
+		"title": "Api Documentation",
+		"termsOfService": "urn:tos",
+		"contact": {
+			
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0"
+		}
+	},
+	"host": "localhost:8080",
+	"basePath": "/",
+	"tags": [
+	{
+		"name": "medallion-controller",
+		"description": "Medallion Controller"
+	}],
+	"paths": {
+		"/medallionservice/v1/medallion-count": {
+			"get": {
+				"tags": ["medallion-controller"],
+				"summary": "medallionUnassignedCount",
+				"operationId": "medallionUnassignedCountUsingGET",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		}
+	}
+}

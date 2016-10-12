@@ -1,0 +1,139 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "Api Documentation",
+		"version": "1.0",
+		"title": "Api Documentation",
+		"termsOfService": "urn:tos",
+		"contact": {
+			
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0"
+		}
+	},
+	"host": "localhost:8080",
+	"basePath": "/",
+	"tags": [
+	{
+		"name": "medallion-controller",
+		"description": "Medallion Controller"
+	}],
+	"paths": {
+		"/medallionservice/v1/medallionHistory/{hardwareId}": {
+			"get": {
+				"tags": ["medallion-controller"],
+				"summary": "getMedallionHistoryByHardwareID",
+				"operationId": "getMedallionHistoryByHardwareIDUsingGET",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+                "parameters": [{
+					"name": "hardwareId",
+					"in": "path",
+					"description": "hardwareId",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Medallion"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		}
+	},
+    "definitions": {
+		"Medallion": {
+			"type": "object",
+			"properties": {
+				"__type": {
+					"type": "string"
+				},
+				"__version": {
+					"type": "string"
+				},
+				"batteryVoltageLevel": {
+					"type": "string"
+				},
+				"bleId": {
+					"type": "string"
+				},
+				"capColor": {
+					"type": "string"
+				},
+				"caseId": {
+					"type": "string"
+				},
+				"created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"document_type": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"guestId": {
+					"type": "string"
+				},
+				"hardwareId": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"majorId": {
+					"type": "string"
+				},
+				"minorId": {
+					"type": "string"
+				},
+				"nfcId": {
+					"type": "string"
+				},
+				"reservationId": {
+					"type": "string"
+				},
+				"ringColor": {
+					"type": "string"
+				},
+				"rssId": {
+					"type": "string"
+				},
+				"sku": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string"
+				},
+				"updated": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"uuId": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

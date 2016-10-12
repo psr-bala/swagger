@@ -1,0 +1,195 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "Api Documentation",
+		"version": "1.0",
+		"title": "Api Documentation",
+		"termsOfService": "urn:tos",
+		"contact": {
+			
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0"
+		}
+	},
+	"host": "localhost:8080",
+	"basePath": "/",
+	"tags": [
+	{
+		"name": "medallion-controller",
+		"description": "Medallion Controller"
+	}],
+	"paths": {
+		"/medallionservice/v1/guestOrders": {
+			"post": {
+				"tags": ["medallion-controller"],
+				"summary": "createGuestOrder",
+				"operationId": "createGuestOrderUsingPOST",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"in": "body",
+					"name": "orderDetails",
+					"description": "orderDetails",
+					"required": true,
+					"schema": {
+						"type": "string"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/GuestsOrder"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"GuestsOrder": {
+			"type": "object",
+			"properties": {
+				"__type": {
+					"type": "string"
+				},
+				"__version": {
+					"type": "string"
+				},
+				"createdDate": {
+					"type": "string"
+				},
+				"created_date": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"document_type": {
+					"type": "string"
+				},
+				"guests": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Guest"
+					}
+				},
+				"id": {
+					"type": "string"
+				},
+				"orderNumber": {
+					"type": "string"
+				},
+				"orderStatus": {
+					"type": "string"
+				},
+				"payment_status": {
+					"type": "string"
+				},
+				"updated_Date": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"voyageDate": {
+					"type": "string"
+				},
+				"voyageId": {
+					"type": "string"
+				}
+			}
+		},
+		"Item": {
+			"type": "object",
+			"properties": {
+				"lineItemId": {
+					"type": "string"
+				},
+				"productCode": {
+					"type": "string"
+				},
+				"sku": {
+					"type": "string"
+				}
+			}
+		},
+		"Guest": {
+			"type": "object",
+			"properties": {
+				"created": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"guestId": {
+					"type": "string"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"reservationId": {
+					"type": "string"
+				},
+				"shippingAddress": {
+					"$ref": "#/definitions/ShippingAddress"
+				}
+			}
+		},
+		"ShippingAddress": {
+			"type": "object",
+			"properties": {
+				"addressId": {
+					"type": "string"
+				},
+				"city": {
+					"type": "string"
+				},
+				"country": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"item": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Item"
+					}
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"organization": {
+					"type": "string"
+				},
+				"phoneNumber": {
+					"type": "string"
+				},
+				"region": {
+					"type": "string"
+				},
+				"street1": {
+					"type": "string"
+				},
+				"street2": {
+					"type": "string"
+				},
+				"zipPostalCode": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
